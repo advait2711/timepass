@@ -1,5 +1,8 @@
 from django.urls import path
-from home.views import *
+from . import views
 
-path('', home, name = 'home'), 
-path('resume/', gen_resume, name = 'resume'),
+urlpatterns = [
+    path('', views.home, name='home'),         # Home page URL
+    path('resume/', views.gen_resume, name='resume'),  # Resume generation URL
+    path('upload/', views.upload_file, name='upload_file'),  # File upload URL
+]
