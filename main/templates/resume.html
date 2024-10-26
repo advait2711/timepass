@@ -1,141 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: montserrat;
         }
-        #mn {
+
+        .container {
+            background-color: #f5f5f5;
+            max-width: 800px;
+            margin: 60px auto;
+            height: auto; /* Change height to auto for dynamic content */
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 10px 2em 30px rgba(0, 0, 0, 0.3);
         }
-        h1 {
+
+        .header {
             text-align: center;
-            color: #333;
         }
-        .section {
-            margin: 20px 0;
+
+        .header h1 {
+            margin-bottom: 5px;
         }
-        button {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
+
+        .header h3 {
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 500;
         }
-        button:hover {
-            background-color: #0056b3;
+
+        .main {
+            display: flex;
+            flex-wrap: wrap;
         }
-        ul {
-            list-style-type: none; /* Remove default list styling */
-            padding-left: 0; /* Remove padding */
+
+        .left, .right {
+            flex: 1;
+            padding: 30px;
+        }
+
+        h2 {
+            padding: 5px;
+            color: #584d4d;
+            margin: 30px 0;
+            text-decoration: underline;
+            font-size: 25px;
+            border-radius: 0 20px 20px 0;
+        }
+
+        .btn1 {
+            margin-left: 43%;
+            padding: 15px 15px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: rgb(106, 233, 106);
+            border-radius: 10px;
         }
     </style>
 </head>
+
 <body>
-
-<div id="mn">
-    <h1>{{ name }}</h1>
-    <div class="section">
-        <h2>About</h2>
-        <p>{{ about }}</p>
+    <h1 style="text-align: center; color:green; font-size:40px; ">GeeksforGeeks</h1>
+    <div id="mn" class="container">
+        <div class="header">
+            <h1>{{name}}</h1>
+            <h3>{{about}}</h3>
+        </div>
+        <div class="main">
+            <div class="left">
+                <h2>Personal Information</h2>
+                <p><strong>Name:</strong> {{name}}</p>
+                <p><strong>Age:</strong> {{age}}</p>
+                <p><strong>Email:</strong> {{email}}</p>
+                <p><strong>Phone:</strong> +91-{{phone}}</p>
+                <h2>Skills</h2>
+                <ul>
+                    <li>{{skill1}}</li>
+                    <li>{{skill2}}</li>
+                    <li>{{skill3}}</li>
+                    <li>{{skill4}}</li>
+                    <li>{{skill5}}</li>
+                </ul>
+                <h2>Education</h2>
+                <h3>{{degree1}}</h3>
+                <p>{{college1}}</p>
+                <p>{{year1}}</p>
+                <br>
+                <h3>{{degree2}}</h3>
+                <p>{{college2}}</p>
+                <p>Year: {{year2}}</p>
+                <h3>{{degree3}}</h3>
+                <p>{{college3}}</p>
+                <p>Year: {{year3}}</p>
+                <h2>Languages</h2>
+                <ul>
+                    <li>{{lang1}}</li>
+                    <li>{{lang2}}</li>
+                    <li>{{lang3}}</li>
+                </ul>
+            </div>
+            <div class="right">
+                <h2>Projects</h2>
+                <h3>{{project1}}</h3>
+                <p><strong>Duration:</strong> {{durat1}}</p>
+                <ul>
+                    <li>{{desc1}}</li>
+                </ul>
+                <br>
+                <h3>{{project2}}</h3>
+                <p><strong>Duration:</strong> {{durat2}}</p>
+                <ul>
+                    <li>{{desc2}}</li>
+                </ul>
+                <h2>Work Experience</h2>
+                <h3>{{company1}}</h3>
+                <p><strong>Position:</strong> {{post1}}</p>
+                <p><strong>Duration:</strong> {{duration1}}</p>
+                <ul>
+                    <li>{{lin11}}</li>
+                </ul>
+                <br>
+                <h3>{{company2}}</h3>
+                <p><strong>Position:</strong> {{post2}}</p>
+                <p><strong>Duration:</strong> {{duration2}}</p>
+                <ul>
+                    <li>{{lin21}}</li>
+                </ul>
+                <h2>Achievements:</h2>
+                <ul>
+                    <li>{{ach1}}</li>
+                    <li>{{ach2}}</li>
+                    <li>{{ach3}}</li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="section">
-        <h2>Contact Information</h2>
-        <p>Email: {{ email }}</p>
-        <p>Phone: {{ phone }}</p>
-        <p>Age: {{ age }}</p>
-    </div>
-    <div class="section">
-        <h2>Skills</h2>
-        <ul>
-            <li>{{ skill1 }}</li>
-            <li>{{ skill2 }}</li>
-            <li>{{ skill3 }}</li>
-            <li>{{ skill4 }}</li>
-            <li>{{ skill5 }}</li>
-        </ul>
-    </div>
+    <button onclick="generatePDF('mn')" type="button" class="btn1">Download PDF</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script type="text/javascript">
+        function generatePDF(containerId) {
+            const container = document.getElementById(containerId);
 
-    <div class="section">
-        <h2>Education</h2>
-        <ul>
-            <li>{{ degree1 }} from {{ college1 }} ({{ year1 }})</li>
-            <li>{{ degree2 }} from {{ college2 }} ({{ year2 }})</li>
-            <li>{{ degree3 }} from {{ college3 }} ({{ year3 }})</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Languages</h2>
-        <ul>
-            <li>{{ lang1 }}</li>
-            <li>{{ lang2 }}</li>
-            <li>{{ lang3 }}</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Projects</h2>
-        <ul>
-            <li>Project Title: {{ project1 }} - Duration: {{ durat1 }} - Description: {{ desc1 }}</li>
-            <li>Project Title: {{ project2 }} - Duration: {{ durat2 }} - Description: {{ desc2 }}</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Experience</h2>
-        <ul>
-            <li>{{ company1 }} - Post: {{ post1 }} - Duration: {{ duration1 }} - Description: {{ lin11 }}</li>
-            <li>{{ company2 }} - Post: {{ post2 }} - Duration: {{ duration2 }} - Description: {{ lin21 }}</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Achievements</h2>
-        <ul>
-            <li>{{ ach1 }}</li>
-            <li>{{ ach2 }}</li>
-            <li>{{ ach3 }}</li>
-        </ul>
-    </div>
-</div>
-
-<button id="download-pdf">Download PDF</button>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script>
-    document.getElementById('download-pdf').addEventListener('click', function() {
-        const container = document.getElementById('mn');
-
-        // Check if the container has content
-        if (container.innerHTML.trim() === "") {
-            console.error("The content is empty.");
-            return;
-        }
-
-        // Generate PDF
-        html2pdf()
-            .from(container)
-            .set({
-                margin: 1,
+            const pdfOptions = {
+                margin: 10,
                 filename: 'resume.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            })
-            .save()
-            .catch(err => console.error(err)); // Catch any errors
-    });
-</script>
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf()
+                .from(container)
+                .set(pdfOptions)
+                .save(); // Use save to directly save the PDF
+        } 
+    </script>
 
 </body>
+
 </html>
