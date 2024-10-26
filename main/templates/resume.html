@@ -111,25 +111,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script type="text/javascript">
         function generatePDF(containerId) {
-            const container = document.getElementById(containerId);
-            console.log(container); // Check if the container is selected
+  const container = document.getElementById(containerId);
+  console.log(container); 
 
-            if (!container) {
-                console.error('Container not found!');
-                return;
-            }
+  if (!container) {
+    console.error('Container not found!');
+    return;
+  }
 
-            html2pdf()
-                .from(container)
-                .set({
-                    margin: 10,
-                    filename: 'resume.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                })
-                .save(); // Trigger the download
-        }
+  html2pdf()
+    .from(container)
+    .set({
+      margin: 10,
+      filename: 'resume.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    })
+    .outputPdf()
+    .then(function (pdf) {
+      const pdfBlob = new Blob([pdf], { type: 'application/pdf' });
+      const pdfLink = document.createElement('a');
+      pdfLink.href = window.URL.createObjectURL(pdfBlob);
+      pdfLink.download = 'resume.pdf';
+      pdfLink.click();
+    });
+}
     </script>
 </body>
 
