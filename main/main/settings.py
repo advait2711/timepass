@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-loh96n12vh1g$howl_$ace+s1%!$x6rzag+fi+6+-t87db^_99
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['timepass-3lf4.onrender.com']
 
 
 # Application definition
@@ -52,10 +52,10 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'main.urls'
+ROOT_URLCONF = 'main.main.urls'
 # Templates Directory
 
-TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'main.wsgi.application'
+WSGI_APPLICATION = 'main.main.wsgi.application'
 
 
 # Database
