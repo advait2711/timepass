@@ -4,26 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resume</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: montserrat;
+            font-family: Arial, sans-serif;
         }
 
         .container {
             background-color: #f5f5f5;
             max-width: 800px;
             margin: 60px auto;
-            height: auto; /* Change height to auto for dynamic content */
             padding: 20px;
             box-shadow: 10px 2em 30px rgba(0, 0, 0, 0.3);
         }
 
         .header {
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .header h1 {
@@ -43,32 +43,41 @@
 
         .left, .right {
             flex: 1;
-            padding: 30px;
+            padding: 20px;
         }
 
         h2 {
-            padding: 5px;
             color: #584d4d;
-            margin: 30px 0;
+            margin: 30px 0 10px;
             text-decoration: underline;
             font-size: 25px;
-            border-radius: 0 20px 20px 0;
         }
 
         .btn1 {
-            margin-left: 43%;
-            padding: 15px 15px;
+            margin: 20px auto;
+            padding: 10px 20px;
             font-size: 15px;
             font-weight: bold;
             background-color: rgb(106, 233, 106);
-            border-radius: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            display: block;
+        }
+
+        .left ul, .right ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .left ul li, .right ul li {
+            line-height: 1.5;
         }
     </style>
 </head>
 
 <body>
-    <h1 style="text-align: center; color:green; font-size:40px; ">GeeksforGeeks</h1>
-    <div id="mn" class="container">
+    <div class="container">
         <div class="header">
             <h1>{{name}}</h1>
             <h3>{{about}}</h3>
@@ -88,17 +97,6 @@
                     <li>{{skill4}}</li>
                     <li>{{skill5}}</li>
                 </ul>
-                <h2>Education</h2>
-                <h3>{{degree1}}</h3>
-                <p>{{college1}}</p>
-                <p>{{year1}}</p>
-                <br>
-                <h3>{{degree2}}</h3>
-                <p>{{college2}}</p>
-                <p>Year: {{year2}}</p>
-                <h3>{{degree3}}</h3>
-                <p>{{college3}}</p>
-                <p>Year: {{year3}}</p>
                 <h2>Languages</h2>
                 <ul>
                     <li>{{lang1}}</li>
@@ -107,33 +105,34 @@
                 </ul>
             </div>
             <div class="right">
+                <h2>Education</h2>
+                <h3>{{degree1}}</h3>
+                <p>{{college1}}, {{year1}}</p>
+                <h3>{{degree2}}</h3>
+                <p>{{college2}}, {{year2}}</p>
+                <h3>{{degree3}}</h3>
+                <p>{{college3}}, {{year3}}</p>
+
                 <h2>Projects</h2>
                 <h3>{{project1}}</h3>
                 <p><strong>Duration:</strong> {{durat1}}</p>
-                <ul>
-                    <li>{{desc1}}</li>
-                </ul>
-                <br>
+                <p>{{desc1}}</p>
                 <h3>{{project2}}</h3>
                 <p><strong>Duration:</strong> {{durat2}}</p>
-                <ul>
-                    <li>{{desc2}}</li>
-                </ul>
+                <p>{{desc2}}</p>
+
                 <h2>Work Experience</h2>
                 <h3>{{company1}}</h3>
                 <p><strong>Position:</strong> {{post1}}</p>
                 <p><strong>Duration:</strong> {{duration1}}</p>
-                <ul>
-                    <li>{{lin11}}</li>
-                </ul>
-                <br>
+                <p>{{lin11}}</p>
+
                 <h3>{{company2}}</h3>
                 <p><strong>Position:</strong> {{post2}}</p>
                 <p><strong>Duration:</strong> {{duration2}}</p>
-                <ul>
-                    <li>{{lin21}}</li>
-                </ul>
-                <h2>Achievements:</h2>
+                <p>{{lin21}}</p>
+
+                <h2>Achievements</h2>
                 <ul>
                     <li>{{ach1}}</li>
                     <li>{{ach2}}</li>
@@ -148,6 +147,7 @@
         function generatePDF(containerId) {
             const container = document.getElementById(containerId);
 
+            // Download as PDF
             const pdfOptions = {
                 margin: 10,
                 filename: 'resume.pdf',
@@ -159,10 +159,9 @@
             html2pdf()
                 .from(container)
                 .set(pdfOptions)
-                .save(); // Use save to directly save the PDF
-        } 
+                .save();
+        }
     </script>
-
 </body>
 
 </html>
