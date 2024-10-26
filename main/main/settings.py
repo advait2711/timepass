@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'main.urls'
+ROOT_URLCONF = 'main.main.urls'
 # Templates Directory
 
 TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
