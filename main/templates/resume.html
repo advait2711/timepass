@@ -13,9 +13,12 @@
         #mn {
             padding: 20px;
             border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
         h1 {
             text-align: center;
+            color: #333;
         }
         .section {
             margin: 20px 0;
@@ -30,6 +33,10 @@
         }
         button:hover {
             background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none; /* Remove default list styling */
+            padding-left: 0; /* Remove padding */
         }
     </style>
 </head>
@@ -103,6 +110,8 @@
 </div>
 
 <button id="download-pdf">Download PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
     document.getElementById('download-pdf').addEventListener('click', function() {
         const container = document.getElementById('mn');
@@ -127,7 +136,6 @@
             .catch(err => console.error(err)); // Catch any errors
     });
 </script>
-
 
 </body>
 </html>
