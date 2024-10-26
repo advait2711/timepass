@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-loh96n12vh1g$howl_$ace+s1%!$x6rzag+fi+6+-t87db^_99
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [https://timepass-3lf4.onrender.com]
 
 
 # Application definition
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'main.wsgi.application'
+WSGI_APPLICATION = 'main.main.wsgi.application'
 
 
 # Database
