@@ -103,18 +103,31 @@
 </div>
 
 <button id="download-pdf">Download PDF</button>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
     document.getElementById('download-pdf').addEventListener('click', function() {
         const container = document.getElementById('mn');
 
+        // Check if the container has content
+        if (container.innerHTML.trim() === "") {
+            console.error("The content is empty.");
+            return;
+        }
+
+        // Generate PDF
         html2pdf()
             .from(container)
-            .save('resume.pdf')
-            .catch(err => console.log(err)); // Catch any errors
+            .set({
+                margin: 1,
+                filename: 'resume.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            })
+            .save()
+            .catch(err => console.error(err)); // Catch any errors
     });
 </script>
+
 
 </body>
 </html>
