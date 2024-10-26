@@ -6,63 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Montserrat, sans-serif;
-        }
-
-        .container {
-            background-color: #f5f5f5;
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 20px;
-            box-shadow: 10px 2em 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .header {
-            text-align: center;
-        }
-
-        .header h1 {
-            margin-bottom: 5px;
-        }
-
-        .header h3 {
-            text-transform: uppercase;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .main {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .left,
-        .right {
-            flex: 1;
-            padding: 30px;
-        }
-
-        h2 {
-            padding: 5px;
-            color: #584d4d;
-            margin: 30px 0;
-            text-decoration: underline;
-            font-size: 25px;
-            border-radius: 0 20px 20px 0;
-        }
-
-        .btn1 {
-            margin-left: 43%;
-            padding: 15px 15px;
-            font-size: 15px;
-            font-weight: bold;
-            background-color: rgb(106, 233, 106);
-            border-radius: 10px;
-        }
+        /* Your existing styles */
     </style>
 </head>
 
@@ -70,40 +14,53 @@
     <h1 style="text-align: center; color: green; font-size: 40px;">GeeksforGeeks</h1>
     <div id="mn" class="container">
         <div class="header">
-            <br><br>
-            <h1>John Doe</h1>
-            <h3>Software Developer</h3>
+            <h1>{{ name }}</h1>
+            <h3>{{ about }}</h3>
         </div>
         <div class="main">
             <div class="left">
                 <h2>Personal Information</h2>
-                <p><strong>Name :</strong> John Doe</p>
-                <p><strong>Age :</strong> 30</p>
-                <p><strong>Email:</strong> john.doe@example.com</p>
-                <p><strong>Phone:</strong> +91-1234567890</p>
+                <p><strong>Name :</strong> {{ name }}</p>
+                <p><strong>Age :</strong> {{ age }}</p>
+                <p><strong>Email:</strong> {{ email }}</p>
+                <p><strong>Phone:</strong> {{ phone }}</p>
                 <h2>Skills</h2>
                 <ul>
-                    <li>Python</li>
-                    <li>Django</li>
-                    <li>JavaScript</li>
-                    <li>HTML/CSS</li>
-                    <li>SQL</li>
+                    {% for skill in skills %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+                <h2>Languages</h2>
+                <ul>
+                    {% for lang in languages %}
+                        <li>{{ lang }}</li>
+                    {% endfor %}
+                </ul>
+                <h2>Achievements</h2>
+                <ul>
+                    {% for ach in achievements %}
+                        <li>{{ ach }}</li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="right">
                 <h2>Projects</h2>
-                <h3>Project 1</h3>
-                <p><strong>Duration:</strong> 6 months</p>
-                <ul>
-                    <li>Description of project 1.</li>
-                </ul>
+                {% for project in projects %}
+                    <h3>{{ project.title }}</h3>
+                    <p><strong>Duration:</strong> {{ project.duration }}</p>
+                    <p>{{ project.description }}</p>
+                {% endfor %}
                 <h2>Work Experience</h2>
-                <h3>Company ABC</h3>
-                <p><strong>Position:</strong> Software Engineer</p>
-                <p><strong>Duration:</strong> 2 years</p>
-                <ul>
-                    <li>Worked on XYZ technology.</li>
-                </ul>
+                {% for exp in experience %}
+                    <h3>{{ exp.company }}</h3>
+                    <p><strong>Position:</strong> {{ exp.position }}</p>
+                    <p><strong>Duration:</strong> {{ exp.duration }}</p>
+                    <p>{{ exp.description }}</p>
+                {% endfor %}
+                <h2>Education</h2>
+                {% for edu in education %}
+                    <h3>{{ edu.degree }} at {{ edu.college }} ({{ edu.year }})</h3>
+                {% endfor %}
             </div>
         </div>
     </div>
