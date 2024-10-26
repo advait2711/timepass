@@ -1,8 +1,9 @@
+# home/urls.py
+
 from django.urls import path
-from . import views
+from home.views import home, gen_resume  # Import your views
 
 urlpatterns = [
-    path('', views.home, name='home'),         # Home page URL
-    path('resume/', views.gen_resume, name='resume'),  # Resume generation URL
-    path('upload/', views.upload_file, name='upload_file'),  # File upload URL
+    path('', home, name='home'),          # URL for the home page
+    path('resume/', gen_resume, name='resume'),  # URL for the resume generation
 ]
