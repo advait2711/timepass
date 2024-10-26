@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: resume-builder
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn main.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: main.settings
+      - key: SECRET_KEY
+        value: 'django-insecure-loh96n12vh1g$howl_$ace+s1%!$x6rzag+fi+6+-t87db^_99'
